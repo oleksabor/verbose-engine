@@ -7,15 +7,19 @@ There are two projects in the solution:
 
 Both projects were created using the VS2019 16.4.4 using in-build templates. 
 
-I've upgraded `TestLibrary` project reference from `package.config` to project references using in-built VS wizard 
+I've upgraded `TestLibrary` project reference from `package.config` to package references using in-built VS wizard 
 (right click on `packages.config` file and there is an option like `migrate to package references`).
 
-This option has converted `package.config` to the project references like
+This option has converted `package.config` to the package references like
 ```xml
-<ItemGroup>
-  <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
-  <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />                
-</ItemGroup>
+   <ItemGroup>
+    <PackageReference Include="MSTest.TestAdapter">
+      <Version>2.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestFramework">
+      <Version>2.1.0</Version>
+    </PackageReference>
+   </ItemGroup>
 ```
 
 The problem is that `dotnet build` fails to build the `TestLibrary` project even after package reference conversion.
